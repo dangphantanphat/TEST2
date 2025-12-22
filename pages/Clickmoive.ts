@@ -2,9 +2,9 @@ import { Page, Locator, expect } from '@playwright/test';
 
 export class Clickmoive {
 
-    readonly the: Locator;
+    private readonly the: Locator;
 
-    readonly page: Page;
+    private readonly page: Page;
 
     constructor(page: Page) {
         this.page = page;

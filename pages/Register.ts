@@ -17,6 +17,7 @@ export class Register {
     readonly dangKyBtn: Locator;
     readonly RegisterBtn: Locator;
     readonly MessRegisterInput: Locator;
+    readonly confirmedRegisterMassage: Locator;
 
     
     // Locator cho thông báo lỗi (Thường là thẻ div/span màu đỏ dưới input)
@@ -41,7 +42,7 @@ export class Register {
         this.hoTenMessage = page.locator('#hoTen-helper-text');
         this.confirmmatKhauMessagematch = page.locator('#confirmPassWord-helper-text');
         this.duplicateEmail = page.getByText('Email đã tồn tại!');
-
+        this.confirmedRegisterMassage = page.getByRole('heading', { name: 'Đăng ký thành công' })
         this.MessRegisterInput = page.getByText('Đây là trường bắt buộc !');
 
     }
