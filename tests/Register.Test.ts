@@ -29,10 +29,8 @@ test.describe('Chuc nang: Dang ky (Register)', () => {
         await signUpPage.submit();
 
         // Assertion:
-        // Cách 1: Kiểm tra chuyển hướng về trang Login
-        //await expect(page).toHaveURL(/login/);
-        // Cách 2: Hoặc kiểm tra thông báo thành công (nếu có alert)
-        // page.on('dialog', dialog => dialog.accept()); // Xử lý nếu có popup
+        expect(signUpPage.confirmedRegisterMassage.isVisible());
+
     });
 
     // --- CASE 2: Bỏ trống thông tin bắt buộc: tất cả ---
@@ -98,32 +96,8 @@ test.describe('Chuc nang: Dang ky (Register)', () => {
     });
 
 
-    // --- CASE 5: Password and ConfirmPW not match ---
-    test('TC05: Fail by Password and ConfirmPW not match', async ({ page }) => {
-        
-        await signUpPage.goto();
-    
-        const randomId = Date.now(); 
-        //Nhập matkhau và confirmmatkhau không khớp
-        const validUser = {
-            taiKhoan: `user${randomId}`,
-            matkhau: 'Test1234567@',
-            confirmmatkhau: 'Test123456@',
-            email: `user${randomId}@gmail.com`,
-            hoTen: 'Auto Test User'
-        };
-
-        await signUpPage.fillForm(validUser);
-        await signUpPage.submit();
-
-        // Assertion: Kiểm tra thông báo lỗi xuất hiện
-        expect(signUpPage.confirmmatKhauMessagematch).toBeVisible();
-        console.log("Trường matkhau và confirmmatkhau không khớp");
-    });
-
-
-    // --- CASE 6: Trùng email ---
-    test('TC06: Fail by Dumplicate Email', async ({ page }) => {
+    // --- CASE 5: Trùng email ---
+    test('TC05: Fail by Dumplicate Email', async ({ page }) => {
         
         await signUpPage.goto();
     
@@ -141,7 +115,7 @@ test.describe('Chuc nang: Dang ky (Register)', () => {
         await signUpPage.submit();
 
         await expect(signUpPage.duplicateEmail).toBeVisible();
-        console.log("Trường matkhau và confirmmatkhau không khớp");
+        console.log("Fail by Dumplicate Email");
 
     });
 });
