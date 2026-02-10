@@ -116,6 +116,7 @@ test.describe('Chuc nang: Dang ky (Register)', () => {
 
         await expect(signUpPage.duplicateEmail).toBeVisible();
         console.log("Fail by Dumplicate Email");
+        console.log("Fail by Dumplicate Email");
 
     });
 });

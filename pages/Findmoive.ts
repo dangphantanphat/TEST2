@@ -3,6 +3,7 @@ import { Page, Locator } from '@playwright/test';
 
 export class FindMoive {
     
+    
     readonly page: Page;
     readonly findmoiveList: Locator;
     readonly findtheaterList: Locator;
